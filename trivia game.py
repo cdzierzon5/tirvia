@@ -45,14 +45,37 @@ def next_block(the_file):
 
     return category, question, answers, correct, explanation
 
-the_file  = open_file("test_file", "r")
-category, question, answers, correct, explanation = next_block(the_file)
-print(category)
-print(question)
-print(answers)
-print(correct)
-print(explanation)
-
+def welcome(title):
+    print("\t\tWelcome to THE TRIVIA CHALLENGE!!!\n")
+    print("\t\t", title, "\n")
+    
+def main():
+    open_file("test_file.txt", "r")
+    title = next_line(the_file)
+    welcome(title)
+    score = 0
+    next_block(the_file)
+    while category:
+        print(category)
+        print(question)
+        for i in range(4):
+            print(answers)
+        answer = input("Enter what you think the answer is: ")
+        if answer == correct:
+            print("nice job you got this qustion correct!")
+            print(correct)
+            score += 1
+            print(score)
+        else:
+            print("you didn't get this quseion right")
+            print("the correct answer was:", correct)
+            print(score)
+        next_block(the_file)
+    test_file.close()
+    print("you have reached the end of this test")
+    print("your score is: ", score)
+    main()
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 
         
 
