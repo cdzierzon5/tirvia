@@ -54,7 +54,7 @@ def main():
     title = next_line(the_file)
     welcome(title)
     score = 0
-    next_block(the_file)
+    category, question, answers, correct, explanation = next_block(the_file)
     while category:
         print(category)
         print(question)
@@ -70,7 +70,7 @@ def main():
             print("you didn't get this quseion right")
             print("the correct answer was:", correct)
             print(score)
-        next_block(the_file)
+        category, question, answers, correct, explanation = next_block(the_file)
     test_file.close()
     print("you have reached the end of this test")
     print("your score is: ", score)
