@@ -15,7 +15,7 @@ def open_file(file_name, mode):
         sys.exit()
     else:
         return the_file
-
+###############################################################################
 def next_line(the_file):
     """Return next line from the trivia file, formatted."""
     try:
@@ -26,7 +26,7 @@ def next_line(the_file):
     else:
         line = line.replace("/", "\n")
         return line
-
+###############################################################################
 def next_block(the_file):
     category = next_line(the_file)
 
@@ -44,38 +44,37 @@ def next_block(the_file):
     explanation = next_line(the_file)
 
     return category, question, answers, correct, explanation
-
+###############################################################################
 def welcome(title):
     print("\t\tWelcome to THE TRIVIA CHALLENGE!!!\n")
     print("\t\t", title, "\n")
-    
+###############################################################################    
 def main():
-    open_file("test_file.txt", "r")
-    title = next_line(the_file)
+    trivia_file = open_file("finaltivia.txt", "r")
+    title = next_line(trivia_file)
     welcome(title)
     score = 0
-    category, question, answers, correct, explanation = next_block(the_file)
+    category, question, answers, correct, explanation = next_block(trivia_file)
     while category:
         print(category)
         print(question)
         for i in range(4):
-            print(answers)
-        answer = input("Enter what you think the answer is: ")
+            print("\t", i + 1, "-", answers[i])
+        answer = input("Enter what you think the answer is: ").upper()
         if answer == correct:
             print("nice job you got this qustion correct!")
-            print(correct)
             score += 1
-            print(score)
+            print("score: ", score)
         else:
             print("you didn't get this quseion right")
             print("the correct answer was:", correct)
-            print(score)
-        category, question, answers, correct, explanation = next_block(the_file)
-    test_file.close()
+            print("score: ", score)
+        category, question, answers, correct, explanation = next_block(trivia_file)
+    trivia_file.close()
     print("you have reached the end of this test")
     print("your score is: ", score)
-    main()
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+main()
+input("\n\nPress the enter key to exit.")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 
         
 
